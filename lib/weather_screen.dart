@@ -139,7 +139,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 ),
 
                 const Text(
-                  'Weather Forecast',
+                  'Hourly Forecast',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -150,37 +150,34 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   height: 10,
                 ),
 
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      HourlyForecastItem(
-                        time: '00:00',
-                        temperature: '301 K',
-                        icon: Icons.cloud,
-                      ),
-                      HourlyForecastItem(
-                        time: '01:00',
-                        temperature: '301 K',
-                        icon: Icons.sunny,
-                      ),
-                      HourlyForecastItem(
-                        time: '02:00',
-                        temperature: '301 K',
-                        icon: Icons.cloud,
-                      ),
-                      HourlyForecastItem(
-                        time: '03:00',
-                        temperature: '301 K',
-                        icon: Icons.cloud,
-                      ),
-                      HourlyForecastItem(
-                        time: '04:00',
-                        temperature: '301 K',
-                        icon: Icons.cloud,
-                      ),
-                    ],
-                  ),
+                // SingleChildScrollView(
+                //   scrollDirection: Axis.horizontal,
+                //   child: Row(
+                //     children: [
+                //       for (int i = 0; i < 6; i++)
+                //         HourlyForecastItem(
+                //           time: data['list'][i + 1]['dt'].toString(),
+                //           temperature:
+                //               data['list'][i + 1]['main']['temp'].toString(),
+                //           icon: data['list'][i + 1]['weather'][0]['main'] ==
+                //                       'Clouds' ||
+                //                   data['list'][i + 1]['weather'][0]['main'] ==
+                //                       'Rain'
+                //               ? Icons.cloud
+                //               : Icons.sunny,
+                //         ),
+                //     ],
+                //   ),
+                // ),
+
+                ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return HourlyForecastItem(
+                      time: time, 
+                      temperature: temperature, 
+                      icon: icon),
+                  },
                 ),
 
                 const SizedBox(
